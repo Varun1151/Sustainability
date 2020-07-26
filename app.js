@@ -1,3 +1,4 @@
+//Require modules
 var express=require("express"),
 	app=express(),
     bodyparser=require("body-parser"),
@@ -64,6 +65,7 @@ app.get("/",(req,res)=>{
 	res.render("home");
 });
 
+//shows all the posts
 app.get("/friendly",function(req,res){
 	Item.find({},function(err,items){
 	   if(err){
@@ -101,7 +103,7 @@ app.post("/friendly",isLoggedIn,upload.single('image'),function(req,res){
 
 
 
-//show route
+//shows all details of a particular post
 app.get("/items/:id",function(req,res){
    Item.findById(req.params.id, function(err,foundItem){
 	   if(err){
@@ -117,7 +119,7 @@ app.get("/friendly/new",isLoggedIn,function(req,res){
 });
 
 
-//edit
+//edits a particular post (only the person who has uploaded it has access)
 app.get("/friendly/:id/edit",function(req,res){
 	console.log("in edit route")
 	Item.findById(req.params.id,function(err,foundItem){
@@ -131,7 +133,7 @@ app.get("/friendly/:id/edit",function(req,res){
 });
 
 
-//update 
+//updates a particular post
 app.put("/friendly/:id",function(req,res){
 	console.log("put")
 	var title=req.body.title;
@@ -152,6 +154,7 @@ app.put("/friendly/:id",function(req,res){
 	});
 });
 
+//deletes a post (only the person who has uploaded the post has access)
 app.delete("/friendly/:id",function(req,res){
 	Item.findByIdAndRemove(req.params.id,function(err){
 		if(err){
@@ -173,6 +176,7 @@ app.get("/userinfo/:id",(req,res)=>{
 	});
 });
 
+//Autentication
 app.get("/login",(req,res)=>{
 	res.render("login")
 });
