@@ -255,6 +255,6 @@ function checkitemownership(req,res,next){
 			res.redirect("back");
 	} 
 }
-app.listen(3001,()=>{
+app.listen(process.env.PORT||3001,()=>{
 	console.log("Server started")
 });
