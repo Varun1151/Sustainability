@@ -1,97 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Sustainability</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
-	<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/darkmode.css"> -->
-  
+    <title>Sustainability</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/darkmode.css"> -->
+
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-	<div class="container">
-  		<a class="navbar-brand" href="#">Sustainability</a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-				controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Echohay</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria- controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
   		</button>
 
-  		<div class="collapse navbar-collapse" id="navbarSupportedContent1">
-    	<ul class="navbar-nav mr-auto">
-    	  
-    	  
-     	 <li class="nav-item">
-     	   <a class="nav-link active" href="/" >Home</a>
-     	 </li>
-			
-      <li class="nav-item">
-         <a class="nav-link" href="/friendly">Products</a>
-       </li>
-		
-     	</ul>
-    	<form class="form-inline my-2 my-lg-0">
-      	<ul class="navbar-nav mr-auto">
-      			<% if(!currentUser){ %>
-				<li class="nav-item">
-        			<a class="nav-link" href="/signup"><span><i class="fas fa-user-plus"></i></span> Sign Up</a>
-      			</li>
-      			<li class="nav-item">
-        			<a class="nav-link" href="/login"><span><i class="fas fa-user"></i></span> Login</a>
-      			</li>
-			<%}
-      		else{%>
-      			<div class="dropdown">
-  					<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    					<%=currentUser.username %>
-  					</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <ul class="navbar-nav mr-auto">
 
-  					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    					<a class="dropdown-item" href="/userinfo/<%=currentUser._id%>">Profile</a>
-    					<a class="dropdown-item" href="/logout"> Logout</a>
-  					</div>
-				</div>
-			<%}%>
-				<!-- <li class="nav-item">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/friendly">Products</a>
+                    </li>
+
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <% if(!currentUser){ %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/signup"><span><i class="fas fa-user-plus"></i></span> Sign Up</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login"><span><i class="fas fa-user"></i></span> Login</a>
+                            </li>
+                            <%}
+      		else{%>
+                                <div class="dropdown">
+                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <%=currentUser.username %>
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" href="/userinfo/<%=currentUser._id%>">Profile</a>
+                                        <a class="dropdown-item" href="/logout"> Logout</a>
+                                    </div>
+                                </div>
+                                <%}%>
+                                    <!-- <li class="nav-item">
     	    		<a class="nav-link active dark-mode-toggle" id="dark-mode-toggle" href="#">Toggle mode</a>
     	  		</li> -->
-     	</ul>
-    	</form>
-  		</div>
-	</div>
-</nav><br>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav><br>
 
-<div class="container">
-	<div class="container">
-		<% if(error && error.length>0){%>
-			<div class="alert alert-danger" role="alert">
-				<%=error%>
-			</div>
-		<%}
+    <div class="container">
+        <div class="container">
+            <% if(error && error.length>0){%>
+                <div class="alert alert-danger" role="alert">
+                    <%=error%>
+                </div>
+                <%}
 		if(success && success.length>0){%>
-			<div class="alert alert-success" role="alert">
-				<%=success%>
-			</div>
-		<%}
+                    <div class="alert alert-success" role="alert">
+                        <%=success%>
+                    </div>
+                    <%}
 		if(info && info.length>0){%>
-			<div class="alert alert-info" role="alert">
-				<%=info%>
-			</div>
-		<%}%>
-	</div>
-	<br>
-	<div class="mainTitle">
-  <p>
-    "Living more sustainable isn't a hippie thing.It's a survival thing."
-  </p>
-  <a href="/friendly" class="abc btn btn-success">Check for eco-friendly products</a>
-  </div>
-</div>
-<!-- <script type="text/javascript" src="/scripts/abcd.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+                        <div class="alert alert-info" role="alert">
+                            <%=info%>
+                        </div>
+                        <%}%>
+        </div>
+        <br>
+        <div class="mainTitle">
+            <p>
+                "Living more sustainable isn't a hippie thing.It's a survival thing."
+            </p>
+            <a href="/friendly" class="abc btn btn-success">Check for eco-friendly products</a>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="/scripts/abcd.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
+
 </html>
