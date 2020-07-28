@@ -14,7 +14,7 @@ require('dotenv').config();
 app.set("view engine","ejs");
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
-mongoose.connect("mongodb+srv://varun51:gotilla@123@cluster0-ovdbs.mongodb.net/Sustainability",{useNewUrlParser:true});
+mongoose.connect("yourdb/Sustainability",{useNewUrlParser:true});
 app.use(flash())
 app.use(methodoverride("_method"));
 
@@ -37,9 +37,9 @@ var upload = multer({ storage: storage, fileFilter: imageFilter})
 
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
-  cloud_name: 'dzkqk6y2p', 
-  api_key: 818758744624256, 
-  api_secret: "ionm18OMZfQFvMamGrDsKIWZbJ4"
+  cloud_name: 'your_cloud_name', 
+  api_key: yourkey, 
+  api_secret: "your_secret"
 });
 
 app.use(require("express-session")({
